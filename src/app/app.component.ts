@@ -45,6 +45,12 @@ export class AppComponent {
     this.sidenav.toggle();
   }
 
+  navigate() {
+    if (this.isMobile) {
+      this.sidenav.toggle();
+    }
+  }
+
   private resetMenu() {
     if (this.isMobile) {
       this.sidenav.close();

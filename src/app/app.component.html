@@ -7,13 +7,13 @@
 <mat-sidenav-container autosize="true">
   <mat-sidenav [mode]="isMobile ? 'over' : 'side'">
     <mat-nav-list>
-      <a mat-list-item routerLink="/shipping/costs" (click)="toggleMenu()">
+      <a mat-list-item routerLink="/shipping/costs" (click)="navigate()">
         <span class="entry">
           <mat-icon>attach_money</mat-icon>
           <span>Custos Caminhão</span>
         </span>
       </a>
-      <a mat-list-item routerLink="/shipping/calculator" (click)="toggleMenu()">
+      <a mat-list-item routerLink="/shipping/calculator" (click)="navigate()">
         <span class="entry">
           <mat-icon>house</mat-icon>
           <span>Calculadora Frete</span>
