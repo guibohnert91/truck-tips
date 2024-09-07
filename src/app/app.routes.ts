@@ -1,6 +1,7 @@
 import { Routes } from '@angular/router';
 import { ShippingCostsComponent } from './shipping/shipping-costs/shipping-costs.component';
 import { ShippingCalculatorComponent } from './shipping/shipping-calculator/shipping-calculator.component';
+import { TransactionsComponent } from './transactions/transactions.component';
 
 export const routes: Routes = [
   {
@@ -15,5 +16,9 @@ export const routes: Routes = [
         component: ShippingCostsComponent,
       },
     ],
+  },
+  {
+    path: 'transactions',
+    component: TransactionsComponent,
   },
 ];

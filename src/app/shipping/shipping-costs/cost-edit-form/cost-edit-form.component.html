@@ -1,0 +1,37 @@
+<div class="container">
+  <h3 mat-dialog-title>Adicionar Custo</h3>
+  <form class="mat-dialog-content">
+    <div class="form">
+      <mat-form-field color="accent">
+        <input
+          matInput
+          #input
+          class="form-control"
+          placeholder="Nome"
+          required
+        />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field>
+      <mat-label>Tipo de Custo</mat-label>
+      <mat-select>
+        @for (costType of costTypes; track costType) {
+        <mat-option [value]="costType.name">{{ costType.name }}</mat-option>
+        }
+      </mat-select>
+    </mat-form-field>
+
+    <div mat-dialog-actions>
+      <button
+        mat-button
+        type="submit"
+        [mat-dialog-close]="1"
+        (click)="confirmAdd()"
+      >
+        Save
+      </button>
+      <button mat-button (click)="onNoClick()" tabindex="-1">Cancel</button>
+    </div>
+  </form>
+</div>

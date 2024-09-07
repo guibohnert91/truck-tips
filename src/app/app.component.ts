@@ -37,25 +37,21 @@ export class AppComponent {
     });
   }
 
-  ngAfterViewInit(): void {
-    this.resetMenu();
-  }
-
   toggleMenu() {
-    this.sidenav.toggle();
+    this.sidenav?.toggle();
   }
 
   navigate() {
     if (this.isMobile) {
-      this.sidenav.toggle();
+      this.sidenav?.toggle();
     }
   }
 
   private resetMenu() {
     if (this.isMobile) {
-      this.sidenav.close();
+      this.sidenav?.close();
     } else {
-      this.sidenav.open();
+      this.sidenav?.open();
     }
   }
 }

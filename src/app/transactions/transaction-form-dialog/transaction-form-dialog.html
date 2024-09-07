@@ -1,0 +1,66 @@
+<h2 mat-dialog-title>Transaction</h2>
+<mat-dialog-content>
+    <form [formGroup]="formGroup" (ngSubmit)="saveTransaction()">
+        @if(formGroup.get('id')?.value !== null){
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <mat-label>Id</mat-label>
+                <input matInput formControlName="id" readonly />
+            </mat-form-field>
+        </div>
+        }
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <mat-label>Title</mat-label>
+                <input matInput formControlName="title" />
+                @if(formGroup.get('title')?.hasError('required')){
+                <mat-error>Transaction title is required.</mat-error>
+                } @if(formGroup.get('title')?.hasError('maxLength')){
+                <mat-error>Max transaction title lenght is {{titleLenght}}.</mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <mat-label>Type</mat-label>
+                <select matNativeControl formControlName="type">
+                    <option value="" selected></option>
+                    @for(type of types; track type){
+                    <option [value]="type">{{type}}</option>
+                    }
+                    <option value="default" disabled>Default</option>
+                </select>
+                @if(formGroup.get('type')?.hasError('required')){
+                <mat-error>Transaction type is required.</mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill" class="date">
+                <mat-label>Date</mat-label>
+                <input matInput [matDatepicker]="picker" formControlName="dateTime" />
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+                @if(formGroup.get('dateTimer')?.hasError('required')){
+                <mat-error>Transaction date is required.</mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <div class="row">
+            <mat-form-field appearance="fill">
+                <mat-label>Data</mat-label>
+                <textarea matInput formControlName="data"></textarea>
+                @if(formGroup.get('data')?.hasError('required')){
+                <mat-error>Transaction data is required.</mat-error>
+                } @if(formGroup.get('data')?.hasError('maxLength')){
+                <mat-error>Max transaction data lenght is {{dataLenght}}.</mat-error>
+                }
+            </mat-form-field>
+        </div>
+        <ng-content></ng-content>
+    </form>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+    <button mat-button mat-dialog-close>Cancel</button>
+    <button mat-button cdkFocusInitial (click)="saveTransaction()">Save</button>
+</mat-dialog-actions>
